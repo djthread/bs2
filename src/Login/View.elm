@@ -1,10 +1,12 @@
 module Login.View exposing (..)
 
-import Html exposing (..)
-import Html.Attributes exposing (value)
-import Html.Events exposing (onClick)
-import Models exposing (User)
-import Login.Messages exposing (..)
+import Html exposing (Html, form, input, div, button, text)
+import Html.Attributes exposing (placeholder, type')
+import Html.Events exposing (onClick, onInput)
+import Models exposing (Model)
+import Types exposing (User)
+import Messages
+import Login.Messages exposing (Msg(..))
 import Routing exposing (Route(..))
 
 
@@ -40,7 +42,8 @@ loginPage model =
       [ input [ type' "text", placeholder "Username", onInput Username ] []
       , input [ type' "password", placeholder "Password", onInput Password] []
       -- , viewValidation model.status
-      , button [ onClick (LoginMsg DoLogin) ] [ text "Log in" ]
+      , button [] [ text "Log in" ]
+      -- , button [ onClick (Messages.LoginMsg DoLogin) ] [ text "Log in" ]
       ]
     ]
 

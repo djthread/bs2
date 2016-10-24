@@ -2,6 +2,7 @@ module Models exposing (..)
 
 -- import Event.Models exposing (Event)
 -- import Episode.Models exposing (Episode)
+import Login.Models exposing (User)
 import Types exposing (..)
 import Messages exposing (Msg(..))
 import Routing

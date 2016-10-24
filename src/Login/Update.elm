@@ -1,6 +1,7 @@
 module Login.Update exposing (..)
 
-import Models exposing (User, Shows)
+import Models exposing (Model)
+import Types exposing (User, Shows)
 import Login.Messages exposing (Msg(..))
 import Login.Commands exposing (doLogin)
 import Navigation
@@ -35,6 +36,16 @@ update message model =
   case message of
     ShowLogin ->
       ( model, Navigation.newUrl "#" )
+
+    Username username ->
+      ( { model | username = username }
+      , Cmd.none
+      )
+
+    Password password ->
+      ( { model | password = password }
+      , Cmd.none
+      )
 
     DoLogin username password ->
       doLogin username password model

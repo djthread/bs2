@@ -18,7 +18,7 @@ page : Model -> Html Msg
 page model =
   case model.route of
     LoginRoute ->
-      Html.App.map LoginMsg (Login.View.view model)
+      Html.App.map LoginMsg (Login.View.view model.username)
 
     NotFoundRoute ->
       notFoundView
@@ -26,6 +26,6 @@ page model =
 
 notFoundView : Html msg
 notFoundView =
-    div []
-        [ text "Not found"
-        ]
+  div []
+    [ text "Not found"
+    ]

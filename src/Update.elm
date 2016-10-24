@@ -20,6 +20,6 @@ update msg model =
     LoginMsg subMsg ->
       let
         ( model, cmd ) =
-          Login.Update.update subMsg model
+          Login.Update.update subMsg model.user
       in
         ( model, Cmd.map LoginMsg cmd )

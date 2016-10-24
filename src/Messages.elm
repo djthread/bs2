@@ -4,8 +4,8 @@ import Login.Messages
 import Phoenix.Socket
 
 type Msg
-  = PhoenixMsg (Phoenix.Socket.Msg Msg)
-  | LoginMsg Login.Messages.Msg
+  = LoginMsg Login.Messages.Msg
+  | PhoenixMsg (Phoenix.Socket.Msg Msg)
 
 -- import Players.Messages
 --

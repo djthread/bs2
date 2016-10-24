@@ -1,10 +1,5 @@
 module Types exposing (..)
 
-type alias User =
-  { username : String
-  , password : String
-  }
-
 type alias ShowSlug =
   String
 
