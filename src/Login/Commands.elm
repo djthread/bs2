@@ -6,28 +6,27 @@ import Json.Encode as JE
 -- import Task
 -- import Players.Models exposing (PlayerId, Player)
 -- import Players.Messages exposing (..)
-import Models exposing (Model)
 -- import Messages
-import Login.Messages exposing (Msg(..))
-import Phoenix.Socket
-import Phoenix.Channel
+import Models exposing (User)
+-- import Login.Messages exposing (Msg(..))
+import Messages
 
 
-doLogin : String -> String -> Model -> ( Model, Cmd Msg )
-doLogin user pass model =
+doLogin : String -> String -> User -> ( User, Cmd Msg )
+doLogin username password user socket =
   let
     params =
       JE.object
-        [ ("user", JE.string user)
-        , ("pass", JE.string pass)
+        [ ("user", JE.string username)
+        , ("pass", JE.string password)
         ]
     channel =
       Phoenix.Channel.init "admin"
       |> Phoenix.Channel.withPayload params
     (phxSocket, phxCmd) =
-      Phoenix.Socket.join channel model.socket
+      Phoenix.Socket.join channel socket
   in
-    ( { model | socket = phxSocket }
+    ( { user | socket = phxSocket }
     , Cmd.map PhoenixMsg phxCmd
     )
 

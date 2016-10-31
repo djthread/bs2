@@ -5,10 +5,8 @@ import Messages exposing (Msg(..))
 import Models exposing (Model, initialModel)
 import View exposing (view)
 import Update exposing (update)
--- import Players.Commands exposing (fetchAll)
 import Login.Commands exposing (doLogin)
 import Routing exposing (Route)
-import Phoenix.Socket
 
 
 init : Result String Route -> ( Model, Cmd Msg )
@@ -23,7 +21,7 @@ init result =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-  Phoenix.Socket.listen model.socket PhoenixMsg
+  Sub.none
 
 
 urlUpdate : Result String Route -> Model -> ( Model, Cmd Msg )

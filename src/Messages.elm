@@ -5,7 +5,6 @@ import Phoenix.Socket
 
 type Msg
   = LoginMsg Login.Messages.Msg
-  | PhoenixMsg (Phoenix.Socket.Msg Msg)
 
 -- import Players.Messages
 --

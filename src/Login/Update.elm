@@ -1,7 +1,7 @@
 module Login.Update exposing (..)
 
-import Models exposing (Model)
-import Types exposing (User, Shows)
+import Login.Models exposing (User)
+import Types exposing (Shows)
 import Login.Messages exposing (Msg(..))
 import Login.Commands exposing (doLogin)
 import Navigation
@@ -31,30 +31,30 @@ import Navigation
 --         List.map select players
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
-update message model =
+update : Msg -> User -> ( User, Cmd Msg )
+update message user =
   case message of
     ShowLogin ->
-      ( model, Navigation.newUrl "#" )
+      ( user, Navigation.newUrl "#" )
 
     Username username ->
-      ( { model | username = username }
+      ( { user | username = username }
       , Cmd.none
       )
 
     Password password ->
-      ( { model | password = password }
+      ( { user | password = password }
       , Cmd.none
       )
 
     DoLogin username password ->
-      doLogin username password model
+      doLogin username password user
 
     LoginSuccess shows ->
-      ( model, Navigation.newUrl "#shows" )
+      ( user, Navigation.newUrl "#shows" )
 
     LoginFailure error ->
-      ( model, Cmd.none )
+      ( user, Cmd.none )
 -- update : Msg -> List Player -> ( List Player, Cmd Msg )
 -- update message players =
 --     case message of

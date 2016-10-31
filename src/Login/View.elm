@@ -4,8 +4,8 @@ import Html exposing (Html, form, input, div, button, text)
 import Html.Attributes exposing (placeholder, type')
 import Html.Events exposing (onClick, onInput)
 import Models exposing (Model)
-import Types exposing (User)
-import Messages
+-- import Login.Models exposing (User)
+-- import Messages
 import Login.Messages exposing (Msg(..))
 import Routing exposing (Route(..))
 
@@ -39,8 +39,8 @@ loginPage : Model -> Html Msg
 loginPage model =
   div []
     [ form []
-      [ input [ type' "text", placeholder "Username", onInput Username ] []
-      , input [ type' "password", placeholder "Password", onInput Password] []
+      [ input [ type' "text", placeholder "Username", onInput SetUsername ] []
+      , input [ type' "password", placeholder "Password", onInput SetPassword] []
       -- , viewValidation model.status
       , button [] [ text "Log in" ]
       -- , button [ onClick (Messages.LoginMsg DoLogin) ] [ text "Log in" ]
